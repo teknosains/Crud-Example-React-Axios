@@ -1,8 +1,10 @@
-import React,{useState, useEffect, Fragment, useCallback} from 'react';
+import React, {useState, useEffect, Fragement, useCallback, Fragment} from 'react';
 
 const Cobalagi = () => {
   return (
-    <h4>Hello wprld</h4>
+    <Fragment>
+      <h4>Hello wprld</h4>
+    </Fragment>  
   );
 };
 
