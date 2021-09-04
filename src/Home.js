@@ -15,7 +15,9 @@ const Home = (props) => {
   return (
     <fieldset style={{width: 400}}>
       <legend>Welcome, {session.username}</legend>
-
+      <br />
+      <br />
+      <br />
       <button onClick={handleLogout}>Logout</button>
     </fieldset>
   )
