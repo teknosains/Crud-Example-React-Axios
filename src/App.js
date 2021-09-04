@@ -15,7 +15,7 @@ const App = () => {
     <React.Fragment>
     <blockquote><pre>Global State => {JSON.stringify(session, null, 2)}</pre></blockquote>
     <AuthContext.Provider value={{session, setSession}}>
-      <Router>
+      <Router basename="/reactjs-global-state"/>
         <Switch>
           {routes.map(route => (
             <Route 
