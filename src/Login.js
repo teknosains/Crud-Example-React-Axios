@@ -80,16 +80,7 @@ const Login = (props) => {
   }
 
   return (
-    <>
-      {state.isLoggedIn ? (
-        <>
-          <button type="button"
-            onClick={() => {
-              dispatch({type: 'LOGOUT'})
-            }}
-          >Logout</button>
-        </>
-      ) : (
+    <>   
       <fieldset style={{width: 400}}>
         <legend>Login</legend>
         <form onSubmit={onSubmit}>
@@ -110,7 +101,6 @@ const Login = (props) => {
           <button>{state.loading ? 'Loading' : 'Login'}</button>
         </form>
       </fieldset>
-      )}
     </>
   )
 }
