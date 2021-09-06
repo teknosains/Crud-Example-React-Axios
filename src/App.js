@@ -1,55 +1,41 @@
-import React, { Component } from 'react'
-import Table from './Table'
-import Form from './Form'
-import Api from './Api'
-import Hook from './Hook'
-import Counter from './Counter'
-import Mreducer from './Mreducer'
-import Useref from './Useref'
+import React, { useContext, useState } from 'react'
+import {
+  HashRouter as Router, // for Gihub pages use HashRouter
+  Redirect,
+  Route,
+  Switch,
+  useHistory
+} from 'react-router-dom'
+import routes from './routes'
+import AuthContext from './context/AuthContext'
 
-class App extends Component {
 
-  state = {
-    workers: []
-  }
 
-  removeWorker = (index) => {
-    const { workers } = this.state;  
-    let remove = workers.filter((val, idx) => {
-      return idx !== index;
-    })
-    this.setState({
-      workers: remove
-    })
-  }
+const App = () => {
 
-  handleSubmit = (worker) => {
-    this.setState({
-      workers: [...this.state.workers, worker]
-    })
-  }
+  let history = useHistory();
 
-  render() {   
-    const { workers } = this.state;
-    return (
-      <div className="container">
-        <h1>Hellow World</h1>
-        <Table tData={workers} removeWorker={this.removeWorker}/>
-        <Form handleSubmit={this.handleSubmit}/>
-        <Api />
-        <hr />
-        <Hook />
-        <hr />
-        <Counter />
-        <hr />
-        <h4>Hook reducer example</h4>
-        <Mreducer />
-        <hr />
-        <h4>Testing useRef react Hook</h4>
-        <Useref />
-      </div>
-    )
-  }
+  const initSession = useContext(AuthContext)
+  const [session, setSession] = useState(initSession.session)
+  return (
+    <React.Fragment>
+    <blockquote><pre>Global State => {JSON.stringify(session, null, 2)}</pre></blockquote>
+    <AuthContext.Provider value={{session, setSession}}>
+      <Router basename="/">
+        <Switch>
+          {routes.map(route => (
+            <Route 
+              key={route.path}
+              path={route.path}
+              component={route.component}
+            />
+          ))}
+          <Redirect from="/" to="/login" />
+        </Switch>
+      </Router>
+    </AuthContext.Provider>
+    </React.Fragment>
+  )
 }
 
 export default App
