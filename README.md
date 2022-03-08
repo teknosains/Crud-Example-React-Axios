@@ -1,4 +1,4 @@
-Simple example of ReactJS global management using useContext hook
+API CRUD Example using ReactJS and Axios
 
 
 Demo: https://teknosains.github.io/ReactJS-Global-State
