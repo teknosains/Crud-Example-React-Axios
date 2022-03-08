@@ -1,4 +1,4 @@
-import { useReducer, useState } from "react"
+import { useReducer } from "react"
 import axios from "axios";
 
 function stateReducer(state, action) {
